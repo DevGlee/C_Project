@@ -1,53 +1,66 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int main (void)
+int main(void)
 {
     int jour;
+    int mois;
+
     
-    /*  LUNDI ==2
-        MARDI ==3
-        MERCREDI ==4
-        JEUDI ==5
-        VENDREDI ==6
-        SAMEDI ==0
-        DIMANCHE ==1*/
+    printf("Entrer une date (jj/mm) : \n");
+    scanf("%d/%d", &jour , &mois);
 
-    printf("Donner un jour \n");
-    scanf("%d", &jour);
-
-        jour=(jour-1)%7;
-        printf("Le reste est %d \n", jour);
-
-    switch (jour)
+        
+    int njours = 31 * (mois - 1);
+    
+    switch (mois)
     {
-        case 0:
-        printf("Nous sommes samedi ! \n");
-        break;
-        case 1:
-        printf("Nous sommes dimanche ! \n");
-        break;
-        case 2:
-        printf("Nous sommes lundi ! \n");
-        break;
-        case 3:
-        printf("Nous sommes mardi ! \n");
-        break;
-        case 4:
-        printf("Nous sommes mercredi ! \n");
-        break;
-        case 5:
-        printf("Nous sommes jeudi ! \n");
-        break;
-        case 6:
-        printf("Nous sommes vendredi ! \n");
-        break;
+    case 12:
+    --njours;
+    case 11:
+    case 10:
+    --njours;
+     case 9:
+     case 8:
+    case 7:
+    --njours;
+    case 6:
+    case 5:
+       --njours;
+    case 4:
+    case 3:
+    njours -= 3;
     
-    default:
-        break;
+    break;
+
     }
     
-    
-    
+    njours += (jour-1);
+
+
+    switch (njours % 7)
+    {
+    case 0:
+        printf("Nous sommes samedi ! \n");
+        break;
+    case 1:
+        printf("Nous sommes dimanche ! \n");
+        break;
+    case 2:
+        printf("Nous sommes lundi ! \n");
+        break;
+    case 3:
+        printf("Nous sommes mardi ! \n");
+        break;
+    case 4:
+        printf("Nous sommes mercredi ! \n");
+        break;
+    case 5:
+        printf("Nous sommes jeudi ! \n");
+        break;
+    case 6:
+        printf("Nous sommes vendredi ! \n");
+        break;
+    }
+
     return 0;
-    
 }
